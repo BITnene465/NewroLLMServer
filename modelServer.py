@@ -32,6 +32,9 @@ class ModelServer:
         """
         同步加载模型的内部实现
         """
+        if self.model_name == model_name:
+            print(f"模型 {model_name} 已加载，无需重复加载")
+            return True
         try:
             # 释放之前的模型资源
             if self.model is not None:

@@ -7,9 +7,12 @@ from modelServer import ModelServer
 
 app = FastAPI(title="Newro LLM Server", description="Newro轻量级LLM服务器")
 PORT = 10721
+MODEL_DIR = "./serve_models"  
+DEFAULT_MODEL = "Qwen3-1.7B"  # 默认模型
 
 # 创建ModelServer实例
-model_server = ModelServer()
+model_server = ModelServer(models_dir=MODEL_DIR)
+model_server.load_model(DEFAULT_MODEL)  # 默认加载的模型
 
 class Message(BaseModel):
     role: str
